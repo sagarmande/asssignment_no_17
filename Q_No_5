@@ -1,0 +1,11 @@
+def findTheWinner(n, k):
+    circle = list(range(1, n + 1))
+    start = 0
+
+    while len(circle) > 1:
+        remove_index = (start + k - 1) % len(circle)
+        circle.pop(remove_index)
+        start = remove_index % len(circle)
+
+    return circle[0]
+print(findTheWinner(5, 2)) # Output: 3

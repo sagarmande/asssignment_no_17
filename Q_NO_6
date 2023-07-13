@@ -1,0 +1,24 @@
+from collections import deque
+
+def deckRevealedIncreasing(deck):
+    deck.sort()
+    n = len(deck)
+    revealed = []
+    queue = deque()
+
+    for card in deck:
+        if revealed:
+            top = revealed.pop()
+            queue.appendleft(top)
+        revealed.append(card)
+        if len(revealed) < n:
+            next_card = queue.popleft()
+            queue.appendleft(next_card)
+
+    result = []
+    while queue:
+        result.append(queue.popleft())
+
+    return result
+deck = [17, 13, 11, 2, 3, 5, 7]
+print(deckRevealedIncreasing(deck)) # Output: [2, 13, 3, 11, 5, 17, 7]

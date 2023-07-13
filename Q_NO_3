@@ -1,0 +1,19 @@
+def countStudents(students, sandwiches):
+    unable_to_eat = 0
+
+    while students and sandwiches:
+        if students[0] == sandwiches[0]:
+            students.pop(0)
+            sandwiches.pop(0)
+            unable_to_eat = 0
+        else:
+            students.append(students.pop(0))
+            unable_to_eat += 1
+
+        if unable_to_eat == len(students):
+            break
+
+    return unable_to_eat
+students = [1, 1, 0, 0]
+sandwiches = [0, 1, 0, 1]
+print(countStudents(students, sandwiches)) # Output: 0
